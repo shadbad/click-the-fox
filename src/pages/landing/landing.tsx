@@ -1,5 +1,10 @@
+import React from 'react';
+import { LandingTemplate } from 'components/templates';
+
 const Landing = function () {
-    return <h1>Landing page</h1>
+
+    return <LandingTemplate />;
+
 };
 
 export { Landing };

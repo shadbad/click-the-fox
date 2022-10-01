@@ -1,0 +1,64 @@
+@use "/src/assets/styles/colors.scss";
+@use "/src/assets/styles/shared.scss";
+
+.landing-template {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.landing-template__logo {
+  width: 20rem;
+  height: 20rem;
+  margin-bottom: 2rem;
+
+  path {
+    stroke-width: 0.125rem;
+    stroke: colors.$orange100;
+    stroke-dasharray: 260rem;
+    stroke-dashoffset: 260rem;
+    fill: transparent;
+    transition: stroke-dashoffset 2s linear, fill 1s ease-in-out 1.5s;
+  }
+}
+
+.landing-template__heading {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1em;
+  margin-bottom: 2rem;
+  color: colors.$purple300;
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path 0.5s ease-in-out 2s;
+}
+
+.landing-template__info {
+  font-size: 0.875rem;
+  line-height: 1.5em;
+  color: colors.$charcoal300;
+  max-width: 18rem;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(25%);
+  transition: opacity 0.5s ease-in-out 2s, transform 0.5s ease-in-out 2s;
+}
+
+.landing-template.animate {
+  .landing-template__logo {
+    path {
+      stroke-dashoffset: 0;
+      fill: colors.$orange400;
+    }
+  }
+
+  .landing-template__heading {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .landing-template__info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
