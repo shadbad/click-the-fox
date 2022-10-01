@@ -7,6 +7,7 @@
   left: 50%;
   text-align: center;
   transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease-in-out 4.5s;
 }
 
 .landing-template__logo {
@@ -46,6 +47,8 @@
 }
 
 .landing-template.animate {
+  opacity: 0;
+
   .landing-template__logo {
     path {
       stroke-dashoffset: 0;
