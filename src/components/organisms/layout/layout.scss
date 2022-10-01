@@ -1,0 +1,72 @@
+@use "/src/assets/styles/colors.scss";
+@use "/src/assets/styles/shared.scss";
+
+[class$="__wrapper"] {
+  @extend .wrapper;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.layout__header,
+.layout__footer {
+  height: 3rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.layout__header__wrapper,
+.layout__footer__wrapper {
+  height: 3rem;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 0;
+    height: 0.0625rem;
+    background-color: colors.$purple700;
+  }
+}
+
+.layout__header__wrapper__icon {
+  margin-right: 0.5rem;
+  path {
+    fill: colors.$orange400;
+  }
+}
+
+.layout__header__wrapper__heading {
+  font-weight: 600;
+  line-height: 1.7rem;
+  font-size: 1rem;
+  height: 1.5rem;
+  color: colors.$purple200;
+}
+
+.layout__body {
+  padding: 4rem 0;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: colors.$charcoal700;
+}
+
+.layout__footer {
+  bottom: 0;
+  top: auto;
+}
+
+.layout__footer__wrapper {
+  height: 3rem;
+  &::after {
+    top: 0;
+    bottom: auto;
+  }
+}
+
+.layout__footer__wrapper__credits {
+  font-size: 0.875rem;
+}
