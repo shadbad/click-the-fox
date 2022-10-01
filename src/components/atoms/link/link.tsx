@@ -12,8 +12,7 @@ type LinkPropTypes = {
 
 const Link = React.memo(function ({ className = '', onClick = undefined, variant = 'plain', href, children }: LinkPropTypes) {
 
-    return (
-
+    const navLink = (
         <NavLink
             to={href}
             className={`link--${variant} ${className}`}
@@ -23,8 +22,22 @@ const Link = React.memo(function ({ className = '', onClick = undefined, variant
             {children}
 
         </NavLink>
-
     );
+
+    const anchor = (
+        <a
+            className={`link--${variant} ${className}`}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+        >
+
+            {children}
+
+        </a>
+    );
+
+    return href.startsWith('https') ? anchor : navLink;
 
 });
 
