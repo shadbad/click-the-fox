@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './link.scss';
 
 type LinkPropTypes = {
-    className: string,
+    className?: string,
     href: string,
     children: React.ReactNode,
     variant?: 'plain' | 'button',
