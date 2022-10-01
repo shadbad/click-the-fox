@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Icon, IconMenu } from 'components/atoms';
+import { nanoid } from '@reduxjs/toolkit';
+import { Icon, IconMenu, Link } from 'components/atoms';
 import { LinkIcon } from 'components/molecules';
+import { useOutsideClickDetector } from 'hooks';
 import 'assets/styles/globals.scss';
 import './layout.scss';
 
@@ -12,15 +14,26 @@ const Layout = React.memo(function ({ children }: props) {
 
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
+    useOutsideClickDetector('.layout__header__wrapper__menu-button, .layout__aside__wrapper__nav', () => setIsMenuOpen(false), []);
+
     const socialLinks: { [media: string]: string } = {
 
         'linkedin': 'https://www.linkedin.com/in/sina-shadbad/',
         'twitter': 'https://twitter.com/SinaShadbad',
         'github': 'https://github.com/shadbad'
 
-    }
+    };
+
+    const navLinks: { [media: string]: string } = {
+
+        'Welcome': '/welcome',
+        'Play': '/play',
+        'Scoreboard': '/scoreboard'
+    };
 
     const handleMenuClick = () => setIsMenuOpen(!isMenuOpen);
+
+    const handleMenuLinkClick = () => setIsMenuOpen(false);
 
     return (
 
@@ -42,7 +55,7 @@ const Layout = React.memo(function ({ children }: props) {
 
             <main className='layout__body'>
 
-                <div className='layout__body__wrapper'>
+                <div className={`layout__body__wrapper ${isMenuOpen ? 'menu-expanded' : ''}`}>
 
                     {children}
 
@@ -60,9 +73,17 @@ const Layout = React.memo(function ({ children }: props) {
 
                         {
                             Object.entries(socialLinks).map(([key, value]) => (
-                                <li className='layout__footer__wrapper__social-media__item'>
-                                    <LinkIcon className='layout__footer__wrapper__social-media__item__link' href={value} iconName={key} />
+
+                                <li key={nanoid()} className='layout__footer__wrapper__social-media__item'>
+
+                                    <LinkIcon
+                                        className='layout__footer__wrapper__social-media__item__link'
+                                        href={value}
+                                        iconName={key}
+                                    />
+
                                 </li>
+
                             ))
                         }
 
@@ -70,6 +91,35 @@ const Layout = React.memo(function ({ children }: props) {
                 </div>
 
             </footer>
+
+            <aside className={`layout__aside ${isMenuOpen ? 'expanded' : ''}`}>
+
+                <div className="layout__aside__wrapper">
+
+                    <nav className="layout__aside__wrapper__nav">
+
+                        {
+                            Object.entries(navLinks).map(([key, value]) => (
+
+                                <Link
+                                    key={nanoid()}
+                                    className="layout__aside__wrapper__nav__link"
+                                    href={value}
+                                    onClick={handleMenuLinkClick}
+                                >
+
+                                    {key}
+
+                                </Link>
+
+                            ))
+                        }
+
+                    </nav>
+
+                </div>
+
+            </aside>
 
         </>
 
