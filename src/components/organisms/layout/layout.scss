@@ -32,6 +32,8 @@
   }
 }
 
+// #region header
+
 .layout__header__wrapper__icon {
   margin-right: 0.5rem;
   path {
@@ -45,7 +47,15 @@
   font-size: 1rem;
   height: 1.5rem;
   color: colors.$purple200;
+  margin-right: auto;
 }
+
+.layout__header__wrapper__menu-button {
+}
+
+// #endregion
+
+// #region body
 
 .layout__body {
   padding: 4rem 0;
@@ -53,6 +63,10 @@
   box-sizing: border-box;
   background-color: colors.$charcoal700;
 }
+
+// #endregion
+
+// #region footer
 
 .layout__footer {
   bottom: 0;
@@ -69,4 +83,34 @@
 
 .layout__footer__wrapper__credits {
   font-size: 0.875rem;
+  margin-right: auto;
 }
+
+.layout__footer__wrapper__social-media {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.layout__footer__wrapper__social-media__item__link {
+  background-color: colors.$charcoal600;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 0.125rem;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {
+    background-color: colors.$purple300;
+
+    svg {
+      path {
+        fill: colors.$purple600;
+      }
+    }
+  }
+}
+
+// #endregion
