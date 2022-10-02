@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-import { Icon, IconMenu, Link } from 'components/atoms';
+import { Icon, ButtonMenu, Link } from 'components/atoms';
 import { LinkIcon } from 'components/molecules';
 import { useOutsideClickDetector } from 'hooks';
 import 'assets/styles/globals.scss';
@@ -47,7 +47,7 @@ const Layout = React.memo(function ({ children }: props) {
 
                     <h1 className='layout__header__wrapper__heading'>Click the Fox! Game</h1>
 
-                    <IconMenu className='layout__header__wrapper__menu-button' isCrossed={isMenuOpen} onClick={handleMenuClick} />
+                    <ButtonMenu className='layout__header__wrapper__menu-button' isCrossed={isMenuOpen} onClick={handleMenuClick} />
 
                 </div>
 
