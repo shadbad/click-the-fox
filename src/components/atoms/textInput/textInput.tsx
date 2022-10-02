@@ -7,7 +7,7 @@ type TextInputPropTypes = {
     value?: string,
     disabled?: boolean,
     onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined,
-    onKeyUp?: React.KeyboardEventHandler<HTMLInputElement> | undefined,
+    onKeyDown?: React.KeyboardEventHandler<HTMLInputElement> | undefined,
     onBlur?: React.FocusEventHandler<HTMLInputElement> | undefined
 }
 
@@ -18,7 +18,7 @@ const TextInput = function (
         value = '',
         disabled = false,
         onChange = undefined,
-        onKeyUp = undefined,
+        onKeyDown = undefined,
         onBlur = undefined
     }: TextInputPropTypes) {
 
@@ -34,10 +34,9 @@ const TextInput = function (
                 type="text"
                 placeholder={label}
                 required={true}
-                pattern="\S+"
                 disabled={disabled}
                 onChange={onChange}
-                onKeyUp={onKeyUp}
+                onKeyDown={onKeyDown}
                 onBlur={onBlur}
                 value={value}
             />
