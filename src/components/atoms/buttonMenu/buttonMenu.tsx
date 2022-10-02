@@ -1,13 +1,13 @@
 import React from 'react';
-import './icon-menu.scss';
+import './button-menu.scss';
 
-type IconMenuPropTypes = {
+type ButtonMenuPropTypes = {
     className?: string,
     isCrossed?: boolean,
     onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 };
 
-const IconMenu = React.memo(function ({ className = '', isCrossed = false, onClick = undefined }: IconMenuPropTypes) {
+const ButtonMenu = React.memo(function ({ className = '', isCrossed = false, onClick = undefined }: ButtonMenuPropTypes) {
 
 
     return (
@@ -24,4 +24,4 @@ const IconMenu = React.memo(function ({ className = '', isCrossed = false, onCli
 
 });
 
-export { IconMenu };
+export { ButtonMenu };
