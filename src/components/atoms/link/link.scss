@@ -11,9 +11,17 @@
 .link--button {
   @extend .link;
   display: inline-block;
-  border-radius: 0.5rem;
-  padding: 0 1.5rem;
-  line-height: 3rem;
+  text-align: center;
   height: 3rem;
-  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  line-height: 3rem;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid colors.$orange400;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: colors.$orange400;
+    color: colors.$charcoal700;
+    border-color: colors.$orange200;
+  }
 }
