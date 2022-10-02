@@ -88,6 +88,11 @@
       clip-path: inset(0 0 0 100%);
     }
   }
+
+  .layout__header__wrapper__player {
+    clip-path: inset(0 0 0 100%);
+    transition: clip-path 0.3s ease-in-out 0.5s;
+  }
 }
 
 .layout__header.animate.start {
@@ -109,6 +114,10 @@
     i {
       clip-path: inset(0 0 0 0);
     }
+  }
+
+  .layout__header__wrapper__player {
+    clip-path: inset(0 0 0 0);
   }
 }
 
