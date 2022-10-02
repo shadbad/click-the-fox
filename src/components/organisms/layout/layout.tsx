@@ -1,20 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
+import { useSelector, useDispatch } from 'react-redux';
 import { Icon, ButtonMenu, Link } from 'components/atoms';
 import { LinkIcon } from 'components/molecules';
 import { useOutsideClickDetector } from 'hooks';
+import { uiActions, RootStateType } from 'store';
 import 'assets/styles/globals.scss';
 import './layout.scss';
 
-type props = {
-    children: React.ReactNode
+type LayoutPropTypes = {
+    children: React.ReactNode,
+    animate?: boolean,
+    animationDelay?: number
 }
 
-const Layout = React.memo(function ({ children }: props) {
+const Layout = React.memo(function ({ animate = false, animationDelay = 100, children }: LayoutPropTypes) {
 
-    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    // #region state
 
-    useOutsideClickDetector('.layout__header__wrapper__menu-button, .layout__aside__wrapper__nav', () => setIsMenuOpen(false), []);
+    const isMenuDrawerOpen = useSelector((state: RootStateType) => state.ui.isMenuDrawerOpen);
+
+    const [startAnimation, setStartAnimation] = useState<boolean>(false);
+
+    // #endregion
+
+    // #region hook calls
+
+    const dispatch = useDispatch();
+
+    useOutsideClickDetector(
+        '.layout__header__wrapper__menu-button, .layout__aside__wrapper__nav',
+        () => dispatch(uiActions.setMenuDrawerStatus(false)),
+        []
+    );
+
+    useLayoutEffect(() => {
+        if (animate) {
+            setTimeout(() => {
+                setStartAnimation(true);
+            }, animationDelay);
+        }
+    });
+
+    // #endregion
+
+    // #region event handlers
+
+    const handleMenuClick = () => dispatch(uiActions.setMenuDrawerStatus(!isMenuDrawerOpen));
+
+    const handleMenuLinkClick = () => dispatch(uiActions.setMenuDrawerStatus(false));
+
+    // #endregion
+
+    // #region data
 
     const socialLinks: { [media: string]: string } = {
 
@@ -24,22 +62,20 @@ const Layout = React.memo(function ({ children }: props) {
 
     };
 
-    const navLinks: { [media: string]: string } = {
+    const navLinks: { [page: string]: string } = {
 
         'Welcome': '/welcome',
         'Play': '/play',
         'Scoreboard': '/scoreboard'
     };
 
-    const handleMenuClick = () => setIsMenuOpen(!isMenuOpen);
-
-    const handleMenuLinkClick = () => setIsMenuOpen(false);
+    // #endregion
 
     return (
 
         <>
 
-            <header className='layout__header'>
+            <header className={`layout__header ${animate ? 'animate' : ''} ${animate && startAnimation ? 'start' : ''}`}>
 
                 <div className='layout__header__wrapper'>
 
@@ -47,7 +83,7 @@ const Layout = React.memo(function ({ children }: props) {
 
                     <h1 className='layout__header__wrapper__heading'>Click the Fox! Game</h1>
 
-                    <ButtonMenu className='layout__header__wrapper__menu-button' isCrossed={isMenuOpen} onClick={handleMenuClick} />
+                    <ButtonMenu className='layout__header__wrapper__menu-button' isCrossed={isMenuDrawerOpen} onClick={handleMenuClick} />
 
                 </div>
 
@@ -55,7 +91,7 @@ const Layout = React.memo(function ({ children }: props) {
 
             <main className='layout__body'>
 
-                <div className={`layout__body__wrapper ${isMenuOpen ? 'menu-expanded' : ''}`}>
+                <div className={`layout__body__wrapper ${isMenuDrawerOpen ? 'menu-expanded' : ''}`}>
 
                     {children}
 
@@ -63,7 +99,7 @@ const Layout = React.memo(function ({ children }: props) {
 
             </main>
 
-            <footer className='layout__footer'>
+            <footer className={`layout__footer ${animate ? 'animate' : ''} ${animate && startAnimation ? 'start' : ''}`}>
 
                 <div className='layout__footer__wrapper'>
 
@@ -92,7 +128,7 @@ const Layout = React.memo(function ({ children }: props) {
 
             </footer>
 
-            <aside className={`layout__aside ${isMenuOpen ? 'expanded' : ''}`}>
+            <aside className={`layout__aside ${isMenuDrawerOpen ? 'expanded' : ''}`}>
 
                 <div className="layout__aside__wrapper">
 

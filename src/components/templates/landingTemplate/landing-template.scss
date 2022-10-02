@@ -22,7 +22,7 @@
     stroke-dasharray: 260rem;
     stroke-dashoffset: 260rem;
     fill: transparent;
-    transition: stroke-dashoffset 2s linear, fill 1s ease-in-out 1.5s;
+    transition: stroke-dashoffset 1.5s linear, fill 0.25s ease-in-out 1.5s;
   }
 }
 
@@ -33,7 +33,7 @@
   margin-bottom: 2rem;
   color: colors.$purple300;
   clip-path: inset(0 50% 0 50%);
-  transition: clip-path 0.5s ease-in-out 2s;
+  transition: clip-path 0.5s ease-in-out 1.5s;
 }
 
 .landing-template__info {
@@ -44,12 +44,10 @@
   margin: auto;
   opacity: 0;
   transform: translateY(25%);
-  transition: opacity 0.5s ease-in-out 2s, transform 0.5s ease-in-out 2s;
+  transition: opacity 0.5s ease-in-out 1.5s, transform 0.5s ease-in-out 1.5s;
 }
 
 .landing-template.animate {
-  opacity: 0;
-
   .landing-template__logo {
     path {
       stroke-dashoffset: 0;

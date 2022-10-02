@@ -1,20 +1,22 @@
-import React, { useLayoutEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { RootStateType } from 'store/store';
 import { LandingTemplate } from 'components/templates';
+import { Layout } from 'components/organisms';
 
 const Landing = function () {
 
+    const isIntroAnimationDone = useSelector((state: RootStateType) => state.ui.isIntroAnimationDone);
+
     const navigate = useNavigate();
 
-    // TODO: replace the timeout with loading logic
+    if (isIntroAnimationDone) navigate('/welcome');
 
-    useLayoutEffect(() => {
-        setTimeout(() => {
-            navigate('/welcome');
-        }, 6000);
-    });
-
-    return <LandingTemplate />;
+    return (
+        <Layout animate={true} animationDelay={2000}>
+            <LandingTemplate />
+        </Layout>
+    );
 
 };
 

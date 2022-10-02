@@ -36,12 +36,6 @@
 
 // #region header
 
-// .layout__header {
-//     opacity: 0;
-//     top: -3rem;
-//     animation: SlideTopIn 1s 1s forwards;
-// }
-
 .layout__header__wrapper__icon {
   margin-right: 0.5rem;
   path {
@@ -57,6 +51,57 @@
   color: colors.$purple200;
   margin-right: auto;
 }
+
+// #region header animation
+
+.layout__header.animate {
+  .layout__header__wrapper {
+    &::after {
+      transform: scaleX(0);
+      transition: transform 0.5s ease-in-out 0.5s;
+    }
+  }
+
+  .layout__header__wrapper__icon {
+    transition: clip-path 0.3s ease-in-out;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .layout__header__wrapper__heading {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.5s ease-in-out 0.3s;
+  }
+
+  .layout__header__wrapper__menu-button {
+    i {
+      clip-path: inset(0 0 0 100%);
+    }
+  }
+}
+
+.layout__header.animate.start {
+  .layout__header__wrapper {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  .layout__header__wrapper__icon {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .layout__header__wrapper__heading {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .layout__header__wrapper__menu-button {
+    i {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+// #endregion
 
 // #endregion
 
@@ -134,6 +179,45 @@
   }
 }
 
+// #region footer animation
+
+.layout__footer.animate {
+  .layout__footer__wrapper {
+    &::after {
+      transform: scaleX(0);
+      transition: transform 0.5s ease-in-out 0.5s;
+    }
+  }
+
+  .layout__footer__wrapper__credits {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.8s ease-in-out;
+  }
+
+  .layout__footer__wrapper__social-media {
+    clip-path: inset(0 0 0 100%);
+    transition: clip-path 0.5s ease-in-out;
+  }
+}
+
+.layout__footer.animate.start {
+  .layout__footer__wrapper {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  .layout__footer__wrapper__credits {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .layout__footer__wrapper__social-media {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+// #endregion
+
 // #endregion
 
 // #region aside
@@ -172,7 +256,7 @@
   bottom: 0;
   width: 18rem;
   z-index: 2;
-  background: linear-gradient(to left, colors.$charcoal700, colors.$charcoal600);
+  background: linear-gradient(to left, colors.$charcoal600, colors.$charcoal700);
   clip-path: inset(0 0 0 100%);
   transition: clip-path 0.3s ease-in-out;
   display: flex;
@@ -225,25 +309,3 @@
 }
 
 // #endregion
-
-@keyframes SlideTopIn {
-  0% {
-    opacity: 0;
-    top: -3rem;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
-  }
-}
-
-@keyframes SlideBottomIn {
-  0% {
-    opacity: 0;
-    bottom: -3rem;
-  }
-  100% {
-    opacity: 1;
-    bottom: 0;
-  }
-}

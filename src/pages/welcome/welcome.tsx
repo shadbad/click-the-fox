@@ -1,9 +1,14 @@
 import React from 'react';
+import { Layout } from 'components/organisms';
 import { WelcomeTemplate } from 'components/templates';
 
 const Welcome = function () {
 
-    return <WelcomeTemplate />;
+    return (
+        <Layout>
+            <WelcomeTemplate />
+        </Layout>
+    );
 
 };
 
