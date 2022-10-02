@@ -1,5 +1,10 @@
+import React from 'react';
+import { WelcomeTemplate } from 'components/templates';
+
 const Welcome = function () {
-    return <h1>Welcome page</h1>
+
+    return <WelcomeTemplate />;
+
 };
 
 export { Welcome };

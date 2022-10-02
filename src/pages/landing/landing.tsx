@@ -11,7 +11,7 @@ const Landing = function () {
     useLayoutEffect(() => {
         setTimeout(() => {
             navigate('/welcome');
-        }, 5000);
+        }, 6000);
     });
 
     return <LandingTemplate />;

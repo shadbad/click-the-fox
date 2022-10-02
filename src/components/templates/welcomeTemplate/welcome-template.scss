@@ -1,0 +1,30 @@
+@use "/src/assets/styles/colors.scss";
+
+.welcome-template {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 30rem;
+}
+
+.welcome-template__heading {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1em;
+  font-weight: 500;
+}
+
+.welcome-template__form {
+  position: relative;
+}
+
+.welcome-template__form__text-input {
+}
+
+.welcome-template__form__submit-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
