@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { useSelector, useDispatch } from 'react-redux';
 import { Icon, ButtonMenu, Link } from 'components/atoms';
-import { LinkIcon } from 'components/molecules';
+import { LinkIcon, TextIcon } from 'components/molecules';
 import { useOutsideClickDetector } from 'hooks';
 import { uiActions, RootStateType } from 'store';
 import 'assets/styles/globals.scss';
@@ -19,6 +19,8 @@ const Layout = React.memo(function ({ animate = false, animationDelay = 100, chi
     // #region state
 
     const isMenuDrawerOpen = useSelector((state: RootStateType) => state.ui.isMenuDrawerOpen);
+
+    const userName = useSelector((state: RootStateType) => state.players.user);
 
     const [startAnimation, setStartAnimation] = useState<boolean>(false);
 
@@ -81,7 +83,11 @@ const Layout = React.memo(function ({ animate = false, animationDelay = 100, chi
 
                     <Icon className='layout__header__wrapper__icon' name='fox' />
 
-                    <h1 className='layout__header__wrapper__heading'>Click the Fox! Game</h1>
+                    <h1 className='layout__header__wrapper__heading'>
+                        <Link href='/'>Click the Fox! Game</Link>
+                    </h1>
+
+                    {userName && userName !== '' && <TextIcon className='layout__header__wrapper__player' iconName='user' text={userName} />}
 
                     <ButtonMenu className='layout__header__wrapper__menu-button' isCrossed={isMenuDrawerOpen} onClick={handleMenuClick} />
 

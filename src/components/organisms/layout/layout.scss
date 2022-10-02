@@ -52,6 +52,17 @@
   margin-right: auto;
 }
 
+.layout__header__wrapper__player {
+  margin-right: 1rem;
+  color: colors.$purple200;
+
+  svg {
+    path {
+      fill: colors.$purple400;
+    }
+  }
+}
+
 // #region header animation
 
 .layout__header.animate {
