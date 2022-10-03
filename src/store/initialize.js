@@ -5,6 +5,7 @@ const storeInitializer = function () {
     const unsubscribe = store.subscribe(() => { });
 
     store.dispatch(playersActions.loadFromLocalStorage());
+    // store.dispatch(boardActions.fetch());
 
     unsubscribe();
 

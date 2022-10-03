@@ -1,2 +1,2 @@
 export { LandingTemplate } from './landingTemplate/landingTemplate';
-export { WelcomeTemplate } from './welcomeTemplate/welcomeTemplate';
+export { PlayerTemplate } from './playerTemplate/playerTemplate';

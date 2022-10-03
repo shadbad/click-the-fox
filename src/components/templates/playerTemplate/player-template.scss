@@ -1,6 +1,6 @@
 @use "/src/assets/styles/colors.scss";
 
-.welcome-template {
+.player-template {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -12,25 +12,25 @@
   align-items: center;
 }
 
-.welcome-template__heading {
+.player-template__heading {
   font-size: 1.25rem;
   margin-bottom: 2rem;
   line-height: 1em;
   font-weight: 500;
 }
 
-.welcome-template__form {
+.player-template__form {
   position: relative;
   width: 100%;
 }
 
-.welcome-template__form__submit-button {
+.player-template__form__submit-button {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
 }
 
-.welcome-template__play-button {
+.player-template__play-button {
   margin-top: 4rem;
   width: 8rem;
 
@@ -41,7 +41,7 @@
   }
 }
 
-.welcome-template__edit-button {
+.player-template__edit-button {
   font-size: 1.75rem;
   height: 2rem;
   line-height: 2rem;
@@ -56,7 +56,7 @@
   color: colors.$purple300;
 }
 
-.welcome-template__edit-button__icon {
+.player-template__edit-button__icon {
   position: absolute;
   width: 1.25rem;
   height: 1.25rem;
@@ -71,8 +71,8 @@
   }
 }
 
-.welcome-template__edit-button:hover {
-  .welcome-template__edit-button__icon {
+.player-template__edit-button:hover {
+  .player-template__edit-button__icon {
     transform: translateX(0);
     opacity: 1;
   }

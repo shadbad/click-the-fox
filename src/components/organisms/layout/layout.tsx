@@ -66,8 +66,8 @@ const Layout = React.memo(function ({ animate = false, animationDelay = 100, chi
 
     const navLinks: { [page: string]: string } = {
 
-        'Welcome': '/welcome',
-        'Play': '/play',
+        'Player': '/player',
+        'Game': '/game',
         'Scoreboard': '/scoreboard'
     };
 

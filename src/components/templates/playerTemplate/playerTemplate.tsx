@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { playersActions, RootStateType } from 'store';
 import { TextInput, Icon, Link } from 'components/atoms';
 import { ButtonIcon } from 'components/molecules';
-import './welcome-template.scss';
+import './player-template.scss';
 
-const WelcomeTemplate = function () {
+const PlayerTemplate = function () {
 
     const dispatch = useDispatch();
 
@@ -40,20 +40,20 @@ const WelcomeTemplate = function () {
     const formJsx = (
 
         <>
-            <h2 className="welcome-template__heading">Please enter your name to play</h2>
+            <h2 className="player-template__heading">Please enter your name to play</h2>
 
-            <form className="welcome-template__form">
+            <form className="player-template__form">
 
                 <TextInput
                     label="Player name"
-                    className="welcome-template__form__text-input"
+                    className="player-template__form__text-input"
                     value={playerName}
                     onChange={handleUsernameChange}
                     onKeyDown={handleUsernameKeyDown}
                 />
 
                 <ButtonIcon
-                    className="welcome-template__form__submit-button"
+                    className="player-template__form__submit-button"
                     iconName="corner-down-left"
                     onClick={handleUsernameSubmit}
                 />
@@ -65,7 +65,7 @@ const WelcomeTemplate = function () {
     const greetJsx = (
         <>
             <button
-                className="welcome-template__edit-button"
+                className="player-template__edit-button"
                 type='button'
                 title='click here to edit player name'
                 onClick={handleUsernameEditClick}
@@ -75,7 +75,7 @@ const WelcomeTemplate = function () {
                     {`Hello ${playerName}`}
                 </span>
 
-                <Icon className="welcome-template__edit-button__icon" name='edit' />
+                <Icon className="player-template__edit-button__icon" name='edit' />
 
             </button>
 
@@ -85,15 +85,15 @@ const WelcomeTemplate = function () {
 
     return (
 
-        <div className="welcome-template">
+        <div className="player-template">
 
             {greet ? greetJsx : formJsx}
 
-            <Link className={`welcome-template__play-button ${greet ? '' : 'disabled'}`} variant="button" href="/play">PLAY!</Link>
+            <Link className={`player-template__play-button ${greet ? '' : 'disabled'}`} variant="button" href="/game">PLAY!</Link>
 
         </div>
 
     );
 };
 
-export { WelcomeTemplate };
+export { PlayerTemplate };

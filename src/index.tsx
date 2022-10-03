@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store, storeInitializer } from 'store';
-
-import { ErrorBoundary, Landing, Welcome, Play, Scoreboard } from 'pages';
+import { ErrorBoundary, Landing, Player, Game, Scoreboard } from 'pages';
 
 storeInitializer();
 
@@ -24,8 +23,8 @@ root.render(
                     <Routes>
 
                         <Route path="/" element={<Landing />} />
-                        <Route path="/welcome" element={<Welcome />} />
-                        <Route path="/play" element={<Play />} />
+                        <Route path="/player" element={<Player />} />
+                        <Route path="/game" element={<Game />} />
                         <Route path="/scoreboard" element={<Scoreboard />} />
 
                     </Routes>
