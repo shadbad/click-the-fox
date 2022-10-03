@@ -1,0 +1,25 @@
+@use "/src/assets/styles/colors.scss";
+
+.button-image {
+  display: block;
+  padding: 0;
+  outline: none;
+  border: none;
+  margin: 0;
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.button-image__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
