@@ -1,0 +1,36 @@
+@use "/src/assets/styles/colors.scss";
+
+.progressbar {
+  display: block;
+  position: relative;
+  height: 1.5rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progressbar__bar {
+  height: 1.5rem;
+  left: 0;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  z-index: 1;
+  border-radius: 0.5rem;
+  background-color: colors.$green400;
+  transform: scaleX(0);
+  transition: transform 0.2s linear;
+}
+
+.progressbar__percentage {
+  position: absolute;
+  height: 1.5rem;
+  line-height: 1.6rem;
+  text-align: center;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 1rem;
+  font-weight: 500;
+  color: colors.$purple200;
+}

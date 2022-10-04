@@ -36,6 +36,12 @@
   transition: clip-path 0.5s ease-in-out 1.5s;
 }
 
+.landing-template__progressbar {
+  margin-bottom: 2rem;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 1.8s;
+}
+
 .landing-template__info {
   font-size: 0.875rem;
   line-height: 1.5em;
@@ -57,6 +63,10 @@
 
   .landing-template__heading {
     clip-path: inset(0 0 0 0);
+  }
+
+  .landing-template__progressbar {
+    opacity: 1;
   }
 
   .landing-template__info {
