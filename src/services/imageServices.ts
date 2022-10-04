@@ -5,7 +5,6 @@ class ImageServices {
     private _axios = axios.create({
         method: 'GET',
         headers: {
-            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
         }
     });

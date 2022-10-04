@@ -18,7 +18,7 @@ root.render(
 
             <Provider store={store}>
 
-                <Router basename="/click-the-fox/">
+                <Router basename="/click-the-fox">
 
                     <Routes>
 
