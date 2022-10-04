@@ -63,9 +63,6 @@
     visibility: hidden;
     clip-path: circle(0);
     transition: visibility 0s linear 0.5s, clip-path 0.5s ease-in-out;
-
-    visibility: visible;
-    clip-path: circle(100%);
   }
 
   &::after {
@@ -85,9 +82,6 @@
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
-
-    opacity: 1;
-    visibility: visible;
   }
 
   &.game-over {
