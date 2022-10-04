@@ -87,6 +87,7 @@
           font-weight: 500;
           white-space: nowrap;
           text-align: center;
+          transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
           &:nth-of-type(4n + 1) {
             background-color: colors.$charcoal400;
@@ -101,6 +102,13 @@
 
           &:nth-of-type(4n + 4) {
             text-align: right;
+          }
+        }
+
+        &:hover {
+          td {
+            background-color: colors.$purple400;
+            color: colors.$green400;
           }
         }
       }

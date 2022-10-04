@@ -14,7 +14,7 @@ export type BoardType = {
 
 export default class GameServices {
 
-    static readonly GAME_DURATION = 5;
+    static readonly GAME_DURATION = 30;
 
     private _foxes: string[] = [];
     private _cats: string[] = [];

@@ -45,7 +45,7 @@ const ScoreboardTemplate = function ({ records }: ScoreboardTemplatePropTypes) {
                     <tbody>
                         {
                             records.map((item, index) => (
-                                <tr key={`${item.user}-${index}`}>
+                                <tr key={`${item.user}-${index}`} title={new Date(item.date).toString()}>
                                     <td>{index + 1}</td>
                                     <td>{item.user}</td>
                                     <td>{dateFormatter(item.date)}</td>
