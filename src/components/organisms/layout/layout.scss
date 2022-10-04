@@ -51,11 +51,16 @@
   height: 1.5rem;
   color: colors.$purple200;
   margin-right: auto;
+  white-space: nowrap;
 }
 
 .layout__header__wrapper__player {
   margin-right: 1rem;
   color: colors.$purple200;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 
   svg {
     path {
