@@ -133,6 +133,10 @@
   height: 100vh;
   box-sizing: border-box;
   background-color: colors.$charcoal700;
+
+  @media (max-width: 30rem) {
+    height: auto;
+  }
 }
 
 .layout__body__wrapper {
@@ -168,6 +172,10 @@
 .layout__footer__wrapper__credits {
   font-size: 0.875rem;
   margin-right: auto;
+
+  @media (max-width: 35rem) {
+    font-size: 0.75rem;
+  }
 }
 
 .layout__footer__wrapper__social-media {
