@@ -24,7 +24,7 @@ const initialState: IPlayersStateType = {
 
 const loadFromLocalStorage = createAsyncThunk('players/loadFromLocalStorage', (arg, thunkAPI) => {
 
-    const localStorageData = window.localStorage.getItem('players');
+    const localStorageData = window.localStorage.getItem('scoreboard');
 
     if (localStorageData) {
 
@@ -55,12 +55,19 @@ const playersSlice = createSlice({
                 score: action.payload
             };
 
-            const record = state.scoreboard.find((record) => record.user === scoreboardItem.user);
+            if (!state.scoreboard) {
 
-            if (record && record.score < scoreboardItem.score)
-                state.scoreboard = [...state.scoreboard.filter((record) => record.user !== scoreboardItem.user), scoreboardItem];
-            else
-                state.scoreboard = [...state.scoreboard, scoreboardItem];
+                state.scoreboard = [scoreboardItem];
+
+            } else {
+
+                const record = state.scoreboard.find((record) => record.user === scoreboardItem.user);
+
+                if (record && record.score < scoreboardItem.score)
+                    state.scoreboard = [...state.scoreboard.filter((record) => record.user !== scoreboardItem.user), scoreboardItem];
+                else
+                    state.scoreboard = [...state.scoreboard, scoreboardItem];
+            }
 
         }
     },
@@ -107,7 +114,7 @@ const ModifyListener = {
         const { getState } = listenerApi;
         const { players } = getState();
 
-        window.localStorage.setItem('cart', JSON.stringify({ user: players.user, scoreboard: players.scoreboard }));
+        window.localStorage.setItem('scoreboard', JSON.stringify({ user: players.user, scoreboard: players.scoreboard }));
 
     }
 };
