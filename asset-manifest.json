@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/click-the-fox/static/css/main.78945120.css",
+    "main.js": "/click-the-fox/static/js/main.414af123.js",
+    "static/js/634.ce1730d6.chunk.js": "/click-the-fox/static/js/634.ce1730d6.chunk.js",
+    "static/js/787.f0997df6.chunk.js": "/click-the-fox/static/js/787.f0997df6.chunk.js",
+    "static/media/poppins-light-italic.woff": "/click-the-fox/static/media/poppins-light-italic.f8013ec431ceca6713aa.woff",
+    "static/media/poppins-extra-light-italic.woff": "/click-the-fox/static/media/poppins-extra-light-italic.0e15efe2f95f5683cfac.woff",
+    "static/media/poppins-italic.woff": "/click-the-fox/static/media/poppins-italic.583b15dbf009ac587c46.woff",
+    "static/media/poppins-semi-bold-italic.woff": "/click-the-fox/static/media/poppins-semi-bold-italic.5d1d819fd981ed2eba45.woff",
+    "static/media/poppins-medium-italic.woff": "/click-the-fox/static/media/poppins-medium-italic.540729a5fcbb152be116.woff",
+    "static/media/poppins-bold-italic.woff": "/click-the-fox/static/media/poppins-bold-italic.d32380437aaa5e2a21b9.woff",
+    "static/media/poppins-extra-bold-italic.woff": "/click-the-fox/static/media/poppins-extra-bold-italic.c10ddd7dba6034bad8f9.woff",
+    "static/media/poppins-thin-italic.woff": "/click-the-fox/static/media/poppins-thin-italic.04ff2542c6f514025502.woff",
+    "static/media/poppins-black-italic.woff": "/click-the-fox/static/media/poppins-black-italic.449b690d4db998aae63f.woff",
+    "static/media/poppins-regular.woff": "/click-the-fox/static/media/poppins-regular.aa27b6bdbf91d267ef8a.woff",
+    "static/media/poppins-extra-light.woff": "/click-the-fox/static/media/poppins-extra-light.84c7f559b025a22503a4.woff",
+    "static/media/poppins-light.woff": "/click-the-fox/static/media/poppins-light.55085b146446f361c975.woff",
+    "static/media/poppins-semi-bold.woff": "/click-the-fox/static/media/poppins-semi-bold.c216913a8330e43e3eb8.woff",
+    "static/media/poppins-medium.woff": "/click-the-fox/static/media/poppins-medium.c91495afd0e2f292c3c4.woff",
+    "static/media/poppins-bold.woff": "/click-the-fox/static/media/poppins-bold.9a27401efe3a40b4605f.woff",
+    "static/media/poppins-extra-bold.woff": "/click-the-fox/static/media/poppins-extra-bold.ede5f47d6ccd1f2c4fe1.woff",
+    "static/media/poppins-black.woff": "/click-the-fox/static/media/poppins-black.ef8fd862f39c44da9de1.woff",
+    "static/media/poppins-thin.woff": "/click-the-fox/static/media/poppins-thin.c357f4b0f9f88c30af61.woff",
+    "index.html": "/click-the-fox/index.html",
+    "main.78945120.css.map": "/click-the-fox/static/css/main.78945120.css.map",
+    "main.414af123.js.map": "/click-the-fox/static/js/main.414af123.js.map",
+    "787.f0997df6.chunk.js.map": "/click-the-fox/static/js/787.f0997df6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.78945120.css",
+    "static/js/main.414af123.js"
+  ]
+}
