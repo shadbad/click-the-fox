@@ -12,6 +12,40 @@
   overflow: hidden;
   cursor: pointer;
   border-radius: 0.25rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: colors.$charcoal600;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out 0.1s;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    background: linear-gradient(to right, transparent, rgba(colors.$charcoal500, 0.25), transparent);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out 0.1s;
+    animation: roller 2s ease-in-out infinite;
+  }
+
+  &.loading {
+    &::before,
+    &::after {
+      opacity: 1;
+    }
+  }
 }
 
 .button-image__image {
@@ -22,4 +56,15 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  z-index: 1;
+}
+
+@keyframes roller {
+  0% {
+    left: -50%;
+  }
+
+  100% {
+    left: 150%;
+  }
 }
