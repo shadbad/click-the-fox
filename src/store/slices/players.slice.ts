@@ -1,13 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+type ScoreBoardRecordType = {
+
+    user: string,
+    score: number,
+    date: number
+
+};
+
 interface IPlayersStateType {
     isLoading: boolean,
     error: string,
     user: string,
-    scoreboard: {
-        user: string,
-        score: number
-    }[]
+    scoreboard: ScoreBoardRecordType[]
 };
 
 interface IPrimitiveActionType<T> {
@@ -52,7 +57,8 @@ const playersSlice = createSlice({
 
             const scoreboardItem = {
                 user: state.user,
-                score: action.payload
+                score: action.payload,
+                date: new Date().valueOf()
             };
 
             if (!state.scoreboard) {
@@ -62,11 +68,14 @@ const playersSlice = createSlice({
             } else {
 
                 const record = state.scoreboard.find((record) => record.user === scoreboardItem.user);
+                let result: ScoreBoardRecordType[] = [];
 
                 if (record && record.score < scoreboardItem.score)
-                    state.scoreboard = [...state.scoreboard.filter((record) => record.user !== scoreboardItem.user), scoreboardItem];
+                    result = [...state.scoreboard.filter((record) => record.user !== scoreboardItem.user), scoreboardItem];
                 else
-                    state.scoreboard = [...state.scoreboard, scoreboardItem];
+                    result = [...state.scoreboard, scoreboardItem];
+
+                state.scoreboard = result.sort((a: ScoreBoardRecordType, b: ScoreBoardRecordType) => b.score - a.score).slice(0, 10);
             }
 
         }

@@ -16,10 +16,10 @@ const fetch = createAsyncThunk('image/fetch', async (arg, thunkAPI) => {
     try {
         const state: RootStateType = thunkAPI.getState() as RootStateType;
 
-        const localStorageData = window.localStorage.getItem('images');
+        const sessionStorageData = window.sessionStorage.getItem('images');
 
-        if (localStorageData) {
-            thunkAPI.dispatch(imageSlice.actions.addImageCollection(JSON.parse(localStorageData)));
+        if (sessionStorageData) {
+            thunkAPI.dispatch(imageSlice.actions.addImageCollection(JSON.parse(sessionStorageData)));
         } else {
 
             if (state.image.foxes.length === 0)
@@ -117,8 +117,8 @@ const imageSlice = createSlice({
             state.isLoading = false;
             state.error = '';
 
-            if (!window.localStorage.getItem('images'))
-                window.localStorage.setItem('images', JSON.stringify({ cats: state.cats, dogs: state.dogs, foxes: state.foxes }));
+            if (!window.sessionStorage.getItem('images'))
+                window.sessionStorage.setItem('images', JSON.stringify({ cats: state.cats, dogs: state.dogs, foxes: state.foxes }));
 
         });
 
