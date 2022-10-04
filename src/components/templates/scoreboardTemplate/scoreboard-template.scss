@@ -8,6 +8,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media (max-width: 33rem) {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: translate(0, 0);
+  }
 }
 .scoreboard-template__heading {
   text-transform: uppercase;
@@ -121,9 +128,18 @@
   justify-content: flex-start;
   flex-flow: row wrap;
   gap: 1.5rem;
+
+  @media (max-width: 550px) {
+    flex-flow: column nowrap;
+    align-items: center;
+  }
 }
 
 .scoreboard-template__navigation__link {
   width: calc((100% - 1.5rem) / 2);
   box-sizing: border-box;
+
+  @media (max-width: 550px) {
+    width: 16rem;
+  }
 }
