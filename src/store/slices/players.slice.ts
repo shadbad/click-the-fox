@@ -31,13 +31,7 @@ const loadFromLocalStorage = createAsyncThunk('players/loadFromLocalStorage', (a
 
     const localStorageData = window.localStorage.getItem('scoreboard');
 
-    if (localStorageData) {
-
-        return JSON.parse(localStorageData);
-
-    }
-
-    return {};
+    return localStorageData ? JSON.parse(localStorageData) : [];
 
 });
 
@@ -61,22 +55,8 @@ const playersSlice = createSlice({
                 date: new Date().valueOf()
             };
 
-            if (!state.scoreboard) {
-
-                state.scoreboard = [scoreboardItem];
-
-            } else {
-
-                const record = state.scoreboard.find((record) => record.user === scoreboardItem.user);
-                let result: ScoreBoardRecordType[] = [];
-
-                if (record && record.score < scoreboardItem.score)
-                    result = [...state.scoreboard.filter((record) => record.user !== scoreboardItem.user), scoreboardItem];
-                else
-                    result = [...state.scoreboard, scoreboardItem];
-
-                state.scoreboard = result.sort((a: ScoreBoardRecordType, b: ScoreBoardRecordType) => b.score - a.score).slice(0, 10);
-            }
+            state.scoreboard = [...state.scoreboard, scoreboardItem]
+                .sort((a: ScoreBoardRecordType, b: ScoreBoardRecordType) => b.score - a.score);
 
         }
     },
@@ -96,8 +76,7 @@ const playersSlice = createSlice({
 
             state.isLoading = false;
             state.error = '';
-            state.user = action.payload.user;
-            state.scoreboard = action.payload.scoreboard;
+            state.scoreboard = action.payload;
 
         });
 
@@ -123,7 +102,7 @@ const ModifyListener = {
         const { getState } = listenerApi;
         const { players } = getState();
 
-        window.localStorage.setItem('scoreboard', JSON.stringify({ user: players.user, scoreboard: players.scoreboard }));
+        window.localStorage.setItem('scoreboard', JSON.stringify(players.scoreboard));
 
     }
 };

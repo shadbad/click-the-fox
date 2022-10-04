@@ -1,3 +1,4 @@
+@use "/src/assets/styles/colors.scss";
 .wrapper {
   max-width: 75rem;
   width: 100%;
@@ -7,4 +8,20 @@
   box-sizing: border-box;
   padding: 0 1.5rem;
   height: auto;
+}
+
+.scrollbar {
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, transparent, rgba(colors.$charcoal500, 0.5), transparent);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(colors.$charcoal300, 0.25);
+    border-radius: 0.25rem;
+  }
 }
