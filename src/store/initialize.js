@@ -1,11 +1,11 @@
-import { store, playersActions } from 'store';
+import { store, playersActions, imageActions } from 'store';
 
 const storeInitializer = function () {
 
     const unsubscribe = store.subscribe(() => { });
 
     store.dispatch(playersActions.loadFromLocalStorage());
-    // store.dispatch(boardActions.fetch());
+    store.dispatch(imageActions.fetch());
 
     unsubscribe();
 

@@ -6,6 +6,6 @@ export { storeInitializer } from './initialize';
 
 export { actions as uiActions } from './slices/ui.slice';
 export { actions as playersActions } from './slices/players.slice';
-export { actions as boardActions } from './slices/board.slice';
+export { actions as imageActions } from './slices/image.slice';
 
 // #endregion
