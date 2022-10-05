@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { ButtonImage } from 'components/atoms';
 import { BoardType } from 'services/gameServices';
