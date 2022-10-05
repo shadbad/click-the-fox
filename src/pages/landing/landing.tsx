@@ -1,21 +1,34 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { RootStateType } from 'store/store';
+import { RootStateType } from 'store';
 import { LandingTemplate } from 'components/templates';
 import { Layout } from 'components/organisms';
+import GameServices from 'services/gameServices';
 
 const Landing = function () {
 
-    const isIntroAnimationDone = useSelector((state: RootStateType) => state.ui.isIntroAnimationDone);
+    const imageState = useSelector((state: RootStateType) => state.image);
 
-    const navigate = useNavigate();
+    const [loadPercentage, setLoadPercentage] = useState(0);
 
-    if (isIntroAnimationDone) navigate('/welcome');
+    useEffect(() => {
+
+        const totalLoadedImages = [imageState.cats, imageState.dogs, imageState.foxes].reduce((total, current) => total += current.length, 0);
+
+        setLoadPercentage(totalLoadedImages === 0 ? 0 : totalLoadedImages / GameServices.TOTAL_IMAGES_COUNT);
+
+    }, [imageState]);
+
+    if (imageState.error !== '') throw new Error(imageState.error);
 
     return (
+
         <Layout animate={true} animationDelay={2000}>
-            <LandingTemplate />
+
+            <LandingTemplate loadPercentage={loadPercentage} />
+
         </Layout>
+
     );
 
 };

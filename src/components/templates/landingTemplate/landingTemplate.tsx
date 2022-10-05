@@ -1,17 +1,14 @@
-import { useState, useLayoutEffect, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { RootStateType } from 'store';
+import { useState, useLayoutEffect } from 'react';
 import { Icon, Link, ProgressBar } from 'components/atoms';
-import GameServices from 'services/gameServices';
 import './landing-template.scss';
 
-const LandingTemplate = function () {
+type LandingTemplatePropTypes = {
+    loadPercentage: number
+}
 
-    const imageState = useSelector((state: RootStateType) => state.image);
+const LandingTemplate = function ({ loadPercentage }: LandingTemplatePropTypes) {
 
-    const [percentage, setPercentage] = useState(0);
-
-    const [animate, setAnimate] = useState<boolean>(false);
+    const [animate, setAnimate] = useState(false);
 
     useLayoutEffect(() => {
         setTimeout(() => {
@@ -19,32 +16,20 @@ const LandingTemplate = function () {
         }, 100);
     }, []);
 
-    useEffect(() => {
-
-        const totalLoadedImages = imageState.error !== '' ?
-            0
-            :
-            imageState.cats.length + imageState.dogs.length + imageState.foxes.length;
-
-        setPercentage(totalLoadedImages === 0 ? 0 : totalLoadedImages / GameServices.TOTAL_IMAGES_COUNT);
-
-    }, [imageState]);
-
-    if (imageState.error !== '') throw new Error(imageState.error);
-
     return (
+
         <div className={`landing-template ${animate ? 'animate' : ''}`}>
 
             <Icon className="landing-template__logo" name="fox" />
 
             <h2 className="landing-template__heading">Click the Fox! Game</h2>
 
-            <ProgressBar className="landing-template__progressbar" percentage={percentage} />
+            <ProgressBar className="landing-template__progressbar" percentage={loadPercentage} />
 
             <p className="landing-template__info">Click the fox as many times as you can within 30 seconds</p>
 
             {
-                percentage === 1 && (
+                loadPercentage === 1 && (
                     <Link
                         className={`landing-template__start-button`}
                         href="/player"
@@ -57,6 +42,7 @@ const LandingTemplate = function () {
             }
 
         </div>
+
     );
 
 };

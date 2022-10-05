@@ -7,13 +7,11 @@ interface IPrimitiveActionType<T> {
 
 interface IUIStateType {
     isMenuDrawerOpen: boolean,
-    isIntroAnimationDone: boolean,
     userName: string
 }
 
 const initialState: IUIStateType = {
     isMenuDrawerOpen: false,
-    isIntroAnimationDone: false,
     userName: ''
 }
 
@@ -28,12 +26,6 @@ const uiSlice = createSlice({
         setMenuDrawerStatus: (state, action: IPrimitiveActionType<boolean>) => {
 
             state.isMenuDrawerOpen = action.payload;
-
-        },
-
-        setIntroAnimationStatus: (state, action: IPrimitiveActionType<boolean>) => {
-
-            state.isIntroAnimationDone = action.payload;
 
         },
 
