@@ -149,6 +149,33 @@
   min-height: 100%;
   transition: filter 0.3s ease-in-out;
 
+  &.loading {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 1.5rem;
+      right: 1.5rem;
+      bottom: 0;
+      background-color: colors.$charcoal700;
+      z-index: 19;
+    }
+
+    &::after {
+      content: "Loading...";
+      position: absolute;
+      top: 50%;
+      left: 1.5rem;
+      right: 1.5rem;
+      text-align: center;
+      transform: translateY(-50%);
+      z-index: 20;
+      font-size: 2rem;
+      font-weight: 700;
+      color: colors.$charcoal500;
+    }
+  }
+
   &.menu-expanded {
     filter: grayscale(100) blur(1px);
   }

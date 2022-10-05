@@ -7,13 +7,11 @@ const Scoreboard = function () {
 
     const playersState = useSelector((state: RootStateType) => state.players);
 
-    if (playersState.isLoading) return <div />
-
     if (playersState.error !== '') throw Error(playersState.error);
 
     return (
 
-        <Layout>
+        <Layout isLoading={playersState.isLoading}>
             <ScoreboardTemplate records={playersState.scoreboard} />
         </Layout>
 

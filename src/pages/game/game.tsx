@@ -9,6 +9,8 @@ import GameServices, { BoardType } from 'services/gameServices';
 
 const Game = function () {
 
+    const dispatch = useDispatch();
+
     const player = useSelector((state: RootStateType) => state.players);
 
     const images = useSelector((state: RootStateType) => state.image);
@@ -20,8 +22,6 @@ const Game = function () {
     const [gameEngine] = useState<GameServices>(new GameServices(images.foxes, images.cats, images.dogs, (remaining) => setTime(remaining)));
 
     const [board, setBoard] = useState<BoardType>(gameEngine.getBoard());
-
-    const dispatch = useDispatch();
 
     const setBoardScore = (tileId: string) => {
 
@@ -43,28 +43,25 @@ const Game = function () {
     }, [time, dispatch, gameEngine]);
 
 
-    if (player.isLoading || images.isLoading) return <div />
-
     if (player.error !== '' || images.error !== '') throw Error(player.error || images.error);
 
     if (!player.user || player.user === '') return <Navigate replace to="/player" />;
 
+    if (redirect) return <Navigate to="/scoreboard" />;
+
 
     return (
 
-        <Layout animate={false}>
-            {
-                redirect ?
-                    <Navigate to="/scoreboard" />
-                    :
-                    <GameTemplate
-                        key={board.id}
-                        time={time}
-                        totalScore={gameEngine.getTotalScore()}
-                        board={board}
-                        setBoardScore={setBoardScore}
-                    />
-            }
+        <Layout animate={false} isLoading={player.isLoading || images.isLoading}>
+
+            <GameTemplate
+                key={board.id}
+                time={time}
+                totalScore={gameEngine.getTotalScore()}
+                board={board}
+                setBoardScore={setBoardScore}
+            />
+
         </Layout>
 
     );

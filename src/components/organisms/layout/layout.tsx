@@ -10,11 +10,12 @@ import './layout.scss';
 
 type LayoutPropTypes = {
     children: React.ReactNode,
+    isLoading?: boolean,
     animate?: boolean,
     animationDelay?: number
 }
 
-const Layout = React.memo(function ({ animate = false, animationDelay = 100, children }: LayoutPropTypes) {
+const Layout = React.memo(function ({ animate = false, animationDelay = 100, isLoading = false, children }: LayoutPropTypes) {
 
     // #region state
 
@@ -97,7 +98,7 @@ const Layout = React.memo(function ({ animate = false, animationDelay = 100, chi
 
             <main className='layout__body'>
 
-                <div className={`layout__body__wrapper ${isMenuDrawerOpen ? 'menu-expanded' : ''}`}>
+                <div className={`layout__body__wrapper ${isMenuDrawerOpen ? 'menu-expanded' : ''} ${isLoading ? 'loading' : ''}`}>
 
                     {children}
 
