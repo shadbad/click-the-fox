@@ -60,8 +60,11 @@ const ScoreboardTemplate = function ({ records }: ScoreboardTemplatePropTypes) {
             </div>
 
             <nav className="scoreboard-template__navigation">
-                <Link className="scoreboard-template__navigation__link" variant='button' href='/player'>To Welcome Screen</Link>
-                <Link className="scoreboard-template__navigation__link" variant='button' href="/game">PLAY!</Link>
+
+                <Link className="scoreboard-template__navigation__link" variant="button" href="/player">To Welcome Screen</Link>
+
+                <Link className="scoreboard-template__navigation__link" variant="button" href="/game">PLAY!</Link>
+
             </nav>
 
         </div>

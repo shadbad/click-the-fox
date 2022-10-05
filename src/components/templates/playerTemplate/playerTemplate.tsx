@@ -16,10 +16,12 @@ const PlayerTemplate = function () {
     const handleUsernameChange: React.ChangeEventHandler<HTMLInputElement> = ({ target }) => {
 
         target.reportValidity();
+
         dispatch(playersActions.setUser(target.value));
+
     };
 
-    const handleUsernameSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    const handleUsernameSubmit: React.MouseEventHandler<HTMLButtonElement> = () => {
 
         if (playerName.trim() !== '') setGreet(true);
 
@@ -28,9 +30,11 @@ const PlayerTemplate = function () {
     const handleUsernameKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
 
         if (event.key === 'Enter') {
+
             event.preventDefault();
 
             if (playerName.trim() !== '') setGreet(true);
+
         }
 
     };
@@ -66,8 +70,8 @@ const PlayerTemplate = function () {
         <>
             <button
                 className="player-template__edit-button"
-                type='button'
-                title='click here to edit player name'
+                type="button"
+                title="click here to edit player name"
                 onClick={handleUsernameEditClick}
             >
 
@@ -75,7 +79,7 @@ const PlayerTemplate = function () {
                     {`Hello ${playerName}`}
                 </span>
 
-                <Icon className="player-template__edit-button__icon" name='edit' />
+                <Icon className="player-template__edit-button__icon" name="edit" />
 
             </button>
 

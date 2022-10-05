@@ -18,13 +18,19 @@ const GameTemplate = function ({ board, totalScore = 0, time, setBoardScore }: G
             <header className="game-template__header">
 
                 <span className="game-template__header__total-score">
+
                     <strong>Score:</strong>
+
                     <span>{totalScore}</span>
+
                 </span>
 
                 <span className="game-template__header__timer">
+
                     <strong>Time left:</strong>
+
                     <span>{time}</span>
+
                 </span>
 
             </header>
@@ -43,6 +49,7 @@ const GameTemplate = function ({ board, totalScore = 0, time, setBoardScore }: G
                         />
 
                     ))
+
                 }
             </div>
 

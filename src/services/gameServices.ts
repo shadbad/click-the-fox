@@ -15,6 +15,7 @@ export type BoardType = {
 export default class GameServices {
 
     static readonly GAME_DURATION = 30;
+    static readonly BOARD_GENERATION_LIMIT = 5;
 
     private _foxes: string[] = [];
     private _cats: string[] = [];
@@ -30,7 +31,7 @@ export default class GameServices {
         this._dogs = dogs;
         this._time = GameServices.GAME_DURATION;
         this._timerCallBack = timerCallBack;
-        this.generateBoards(5);
+        this.generateBoards(GameServices.BOARD_GENERATION_LIMIT);
     }
 
     private getRandomIndexes(quantity: number, max: number) {
@@ -77,27 +78,37 @@ export default class GameServices {
     }
 
     public startTimer() {
+
         this._intervalId = setInterval(() => {
+
             if (this._time > 0) {
+
                 this._time -= 1;
                 this._timerCallBack(this._time);
-            } else {
-                clearInterval(this._intervalId);
-            }
+
+            } else clearInterval(this._intervalId);
+
         }, 1000);
     }
 
     public resetTimer() {
+
         clearInterval(this._intervalId);
+
         this._time = GameServices.GAME_DURATION;
+
     }
 
     public pauseTimer() {
+
         clearInterval(this._intervalId);
+
     }
 
     public get Time() {
+
         return this._time;
+
     }
 
     public setBoardScore(boardId: string, tileId: string) {

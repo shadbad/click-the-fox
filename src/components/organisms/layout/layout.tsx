@@ -17,17 +17,11 @@ type LayoutPropTypes = {
 
 const Layout = React.memo(function ({ animate = false, animationDelay = 100, isLoading = false, children }: LayoutPropTypes) {
 
-    // #region state
-
     const isMenuDrawerOpen = useSelector((state: RootStateType) => state.ui.isMenuDrawerOpen);
 
     const userName = useSelector((state: RootStateType) => state.players.user);
 
     const [startAnimation, setStartAnimation] = useState<boolean>(false);
-
-    // #endregion
-
-    // #region hook calls
 
     const dispatch = useDispatch();
 
@@ -45,17 +39,9 @@ const Layout = React.memo(function ({ animate = false, animationDelay = 100, isL
         }
     });
 
-    // #endregion
-
-    // #region event handlers
-
     const handleMenuClick = () => dispatch(uiActions.setMenuDrawerStatus(!isMenuDrawerOpen));
 
     const handleMenuLinkClick = () => dispatch(uiActions.setMenuDrawerStatus(false));
-
-    // #endregion
-
-    // #region data
 
     const socialLinks: { [media: string]: string } = {
 
@@ -72,31 +58,29 @@ const Layout = React.memo(function ({ animate = false, animationDelay = 100, isL
         'Scoreboard': '/scoreboard'
     };
 
-    // #endregion
-
     return (
 
         <>
 
             <header className={`layout__header ${animate ? 'animate' : ''} ${animate && startAnimation ? 'start' : ''}`}>
 
-                <div className='layout__header__wrapper'>
+                <div className="layout__header__wrapper">
 
-                    <Icon className='layout__header__wrapper__icon' name='fox' />
+                    <Icon className="layout__header__wrapper__icon" name="fox" />
 
-                    <h1 className='layout__header__wrapper__heading'>
-                        <Link href='/'>Click the Fox! Game</Link>
+                    <h1 className="layout__header__wrapper__heading">
+                        <Link href="/">Click the Fox! Game</Link>
                     </h1>
 
-                    {userName && userName !== '' && <TextIcon className='layout__header__wrapper__player' iconName='user' text={userName} />}
+                    {userName && userName !== '' && <TextIcon className="layout__header__wrapper__player" iconName="user" text={userName} />}
 
-                    <ButtonMenu className='layout__header__wrapper__menu-button' isCrossed={isMenuDrawerOpen} onClick={handleMenuClick} />
+                    <ButtonMenu className="layout__header__wrapper__menu-button" isCrossed={isMenuDrawerOpen} onClick={handleMenuClick} />
 
                 </div>
 
             </header>
 
-            <main className='layout__body'>
+            <main className="layout__body">
 
                 <div className={`layout__body__wrapper ${isMenuDrawerOpen ? 'menu-expanded' : ''} ${isLoading ? 'loading' : ''}`}>
 
@@ -108,11 +92,11 @@ const Layout = React.memo(function ({ animate = false, animationDelay = 100, isL
 
             <footer className={`layout__footer ${animate ? 'animate' : ''} ${animate && startAnimation ? 'start' : ''}`}>
 
-                <div className='layout__footer__wrapper'>
+                <div className="layout__footer__wrapper">
 
-                    <small className='layout__footer__wrapper__credits'>Developed by Sina Shadbad</small>
+                    <small className="layout__footer__wrapper__credits">Developed by Sina Shadbad</small>
 
-                    <ul className='layout__footer__wrapper__social-media'>
+                    <ul className="layout__footer__wrapper__social-media">
 
                         {
                             Object.entries(socialLinks).map(([key, value]) => (

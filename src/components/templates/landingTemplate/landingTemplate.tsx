@@ -19,12 +19,13 @@ const LandingTemplate = function () {
     }, []);
 
     useEffect(() => {
+
+        const TOTAL_IMAGES = 40;
+
         const totalLoadedImages = imageState.error !== '' ?
             0
             :
             imageState.cats.length + imageState.dogs.length + imageState.foxes.length;
-
-        const TOTAL_IMAGES = 40;
 
         setPercentage(totalLoadedImages === 0 ? 0 : totalLoadedImages / TOTAL_IMAGES);
 

@@ -26,6 +26,7 @@ class ImageServices {
         } catch (error) {
 
             console.error(error);
+
             throw error;
 
         }
@@ -34,31 +35,31 @@ class ImageServices {
     private async fetchAFox() {
 
         try {
+
             const { data } = await this._axios.get(this._resources.fox);
 
             return data.image;
 
         } catch (error) {
+
             console.error(error);
 
             throw error;
+
         }
     }
 
-    async fetch(animal: 'cat' | 'dog' | 'fox') {
-        let url = '';
+    public async fetch(animal: 'cat' | 'dog' | 'fox') {
 
-        if (animal === 'fox') {
-            url = await this.fetchAFox();
-        } else {
-            url = await this.fetchACatOrDog(animal);
-        }
+        return (animal === 'fox') ?
 
-        return url;
+            await this.fetchAFox()
+            :
+            await this.fetchACatOrDog(animal);
 
     }
 
-    async loadImage(image: string, loadCallback: Function) {
+    public async loadImage(image: string, loadCallback: Function) {
 
         const img = new Image();
 
