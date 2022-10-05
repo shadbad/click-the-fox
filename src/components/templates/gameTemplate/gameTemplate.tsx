@@ -15,7 +15,7 @@ type GameTemplatePropTypes = {
 
 const GameTemplate = function ({ board, totalScore = 0, time, setBoardScore, pause, resume }: GameTemplatePropTypes) {
 
-    useEffect(() => { pause(); }, []);
+    useEffect(() => { pause(); return pause }, []);
 
     const TILES_COUNT = 9;
 
