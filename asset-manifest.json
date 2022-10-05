@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/click-the-fox/static/css/main.983891c0.css",
+    "main.css": "/click-the-fox/static/css/main.10b60e0b.css",
     "main.js": "/click-the-fox/static/js/main.fe1b28c2.js",
     "static/js/634.ce1730d6.chunk.js": "/click-the-fox/static/js/634.ce1730d6.chunk.js",
     "static/js/787.f0997df6.chunk.js": "/click-the-fox/static/js/787.f0997df6.chunk.js",
@@ -23,12 +23,12 @@
     "static/media/poppins-black.woff": "/click-the-fox/static/media/poppins-black.ef8fd862f39c44da9de1.woff",
     "static/media/poppins-thin.woff": "/click-the-fox/static/media/poppins-thin.c357f4b0f9f88c30af61.woff",
     "index.html": "/click-the-fox/index.html",
-    "main.983891c0.css.map": "/click-the-fox/static/css/main.983891c0.css.map",
+    "main.10b60e0b.css.map": "/click-the-fox/static/css/main.10b60e0b.css.map",
     "main.fe1b28c2.js.map": "/click-the-fox/static/js/main.fe1b28c2.js.map",
     "787.f0997df6.chunk.js.map": "/click-the-fox/static/js/787.f0997df6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.983891c0.css",
+    "static/css/main.10b60e0b.css",
     "static/js/main.fe1b28c2.js"
   ]
 }
