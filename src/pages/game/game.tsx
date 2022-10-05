@@ -60,6 +60,8 @@ const Game = function () {
                 totalScore={gameEngine.getTotalScore()}
                 board={board}
                 setBoardScore={setBoardScore}
+                pause={gameEngine.pauseTimer.bind(gameEngine)}
+                resume={gameEngine.startTimer.bind(gameEngine)}
             />
 
         </Layout>

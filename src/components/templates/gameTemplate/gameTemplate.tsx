@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { ButtonImage } from 'components/atoms';
 import { BoardType } from 'services/gameServices';
 import './game-template.scss';
@@ -6,10 +7,31 @@ type GameTemplatePropTypes = {
     board: BoardType,
     totalScore: number,
     time: number,
-    setBoardScore: (tileId: string) => void
+    setBoardScore: (tileId: string) => void,
+    pause: () => void,
+    resume: () => void
 }
 
-const GameTemplate = function ({ board, totalScore = 0, time, setBoardScore }: GameTemplatePropTypes) {
+const GameTemplate = function ({ board, totalScore = 0, time, setBoardScore, pause, resume }: GameTemplatePropTypes) {
+
+    useEffect(() => { pause(); }, []);
+
+    const TILES_COUNT = 9;
+
+    let loadedImagesCount = 0;
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const handleLoad = () => {
+
+        loadedImagesCount += 1;
+
+        if (loadedImagesCount === TILES_COUNT) {
+            setIsLoading(() => false);
+            resume();
+        }
+
+    };
 
     return (
 
@@ -45,7 +67,9 @@ const GameTemplate = function ({ board, totalScore = 0, time, setBoardScore }: G
                             className="game-template__tiles__item"
                             description={`a ${item.type} image with the id of ${item.id}`}
                             image={item.src}
+                            showLoadAnimation={isLoading}
                             onClick={() => setBoardScore(item.id)}
+                            loadCallback={handleLoad}
                         />
 
                     ))

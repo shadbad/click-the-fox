@@ -25,6 +25,7 @@ export default class GameServices {
     private _cats: string[] = [];
     private _dogs: string[] = [];
     private _boards: BoardType[] = [];
+    private _isTimerRunning = false;
     private _time: number = 0;
     private _timerCallBack: Function;
     private _intervalId: string | number | NodeJS.Timeout | undefined = undefined;
@@ -34,6 +35,7 @@ export default class GameServices {
         this._cats = cats;
         this._dogs = dogs;
         this._time = GameServices.GAME_DURATION;
+        this._intervalId = undefined;
         this._timerCallBack = timerCallBack;
         this.generateBoards(GameServices.BOARD_GENERATION_LIMIT);
     }
@@ -83,6 +85,10 @@ export default class GameServices {
 
     public startTimer() {
 
+        if (this._isTimerRunning) return;
+
+        this._isTimerRunning = true;
+
         this._intervalId = setInterval(() => {
 
             if (this._time > 0) {
@@ -90,14 +96,14 @@ export default class GameServices {
                 this._time -= 1;
                 this._timerCallBack(this._time);
 
-            } else clearInterval(this._intervalId);
+            } else {
+                this.pauseTimer();
+            }
 
         }, 1000);
     }
 
     public resetTimer() {
-
-        clearInterval(this._intervalId);
 
         this._time = GameServices.GAME_DURATION;
 
@@ -105,7 +111,10 @@ export default class GameServices {
 
     public pauseTimer() {
 
-        clearInterval(this._intervalId);
+        if (this._isTimerRunning) {
+            clearInterval(this._intervalId);
+            this._isTimerRunning = false;
+        }
 
     }
 
@@ -137,7 +146,7 @@ export default class GameServices {
 
     public getBoard(): BoardType {
 
-        if (!this._intervalId) this.startTimer();
+        // if (!this._intervalId) this.startTimer();
 
         if (this._boards.filter((board) => board.score === 0).length <= 3) this.generateBoards(2);
 

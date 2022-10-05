@@ -1,30 +1,35 @@
-import { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useLayoutEffect, useRef } from 'react';
 import './button-image.scss';
 
 type ButtonImagePropTypes = {
     className?: string,
     image: string,
     description?: string,
+    showLoadAnimation?: boolean,
     onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined,
-    onLoad?: React.ReactEventHandler<HTMLImageElement> | undefined
+    loadCallback?: Function
 }
 
-const ButtonImage = function ({ className = '', image, description, onClick = undefined, onLoad = undefined }: ButtonImagePropTypes) {
+const ButtonImage = function ({ className = '', image, description, showLoadAnimation = false, onClick = undefined, loadCallback = undefined }: ButtonImagePropTypes) {
 
-    const [hasLoaded, setHasLoaded] = useState(false);
+    const imgRef = useRef<HTMLImageElement>(null);
 
-    const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const handleLoad = () => loadCallback && loadCallback();
 
-        setHasLoaded(true);
-        if (onLoad) onLoad(event);
-
-    }
+    useLayoutEffect(() => {
+        setTimeout(() => {
+            if (imgRef.current?.complete && loadCallback) {
+                loadCallback();
+            }
+        }, 50);
+    }, []);
 
     return (
 
-        <button className={`button-image ${hasLoaded ? '' : 'loading'} ${className}`} onClick={onClick}>
+        <button className={`button-image ${showLoadAnimation ? 'loading' : ''} ${className}`} onClick={onClick}>
 
-            <img className="button-image__image" src={image} alt={description} onLoad={handleLoad} />
+            <img ref={imgRef} className="button-image__image" src={image} alt={description} onLoad={handleLoad} />
 
         </button>
 
