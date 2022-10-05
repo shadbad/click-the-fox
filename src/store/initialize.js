@@ -2,13 +2,22 @@ import { store, playersActions, imageActions } from 'store';
 
 const storeInitializer = function () {
 
-    const unsubscribe = store.subscribe(() => { });
+    try {
 
-    store.dispatch(playersActions.loadFromLocalStorage());
+        const unsubscribe = store.subscribe(() => { });
 
-    store.dispatch(imageActions.fetch());
+        store.dispatch(playersActions.loadFromLocalStorage());
 
-    unsubscribe();
+        store.dispatch(imageActions.fetch());
+
+        unsubscribe();
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
 
 };
 

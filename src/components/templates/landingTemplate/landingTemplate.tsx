@@ -2,6 +2,7 @@ import { useState, useLayoutEffect, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootStateType } from 'store';
 import { Icon, Link, ProgressBar } from 'components/atoms';
+import GameServices from 'services/gameServices';
 import './landing-template.scss';
 
 const LandingTemplate = function () {
@@ -20,16 +21,16 @@ const LandingTemplate = function () {
 
     useEffect(() => {
 
-        const TOTAL_IMAGES = 40;
-
         const totalLoadedImages = imageState.error !== '' ?
             0
             :
             imageState.cats.length + imageState.dogs.length + imageState.foxes.length;
 
-        setPercentage(totalLoadedImages === 0 ? 0 : totalLoadedImages / TOTAL_IMAGES);
+        setPercentage(totalLoadedImages === 0 ? 0 : totalLoadedImages / GameServices.TOTAL_IMAGES_COUNT);
 
     }, [imageState]);
+
+    if (imageState.error !== '') throw new Error(imageState.error);
 
     return (
         <div className={`landing-template ${animate ? 'animate' : ''}`}>

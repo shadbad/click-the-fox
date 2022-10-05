@@ -16,6 +16,10 @@ export default class GameServices {
 
     static readonly GAME_DURATION = 30;
     static readonly BOARD_GENERATION_LIMIT = 5;
+    static readonly FOX_IMAGE_LOAD_SIZE = 8;
+    static readonly DOG_IMAGE_LOAD_SIZE = 16;
+    static readonly CAT_IMAGE_LOAD_SIZE = 16;
+    static readonly TOTAL_IMAGES_COUNT = 40;
 
     private _foxes: string[] = [];
     private _cats: string[] = [];

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootStateType } from 'store/store';
 import imageServices from 'services/imageServices';
-
+import GameServices from 'services/gameServices';
 
 interface IImageStateType {
     isLoading: boolean,
@@ -19,11 +19,13 @@ const fetch = createAsyncThunk('image/fetch', async (arg, thunkAPI) => {
         const sessionStorageData = window.sessionStorage.getItem('images');
 
         if (sessionStorageData) {
+
             thunkAPI.dispatch(imageSlice.actions.addImageCollection(JSON.parse(sessionStorageData)));
+
         } else {
 
             if (state.image.foxes.length === 0)
-                for (let i = 0; i < 8; i++) {
+                for (let i = 0; i < GameServices.FOX_IMAGE_LOAD_SIZE; i++) {
                     try {
                         const url = await imageServices.fetch('fox');
                         imageServices.loadImage(url, () => thunkAPI.dispatch(imageSlice.actions.addImage({ animal: 'fox', url })));
@@ -34,7 +36,7 @@ const fetch = createAsyncThunk('image/fetch', async (arg, thunkAPI) => {
                 }
 
             if (state.image.dogs.length === 0)
-                for (let i = 0; i < 16; i++) {
+                for (let i = 0; i < GameServices.DOG_IMAGE_LOAD_SIZE; i++) {
                     try {
                         const url = await imageServices.fetch('dog');
                         imageServices.loadImage(url, () => thunkAPI.dispatch(imageSlice.actions.addImage({ animal: 'dog', url })));
@@ -45,7 +47,7 @@ const fetch = createAsyncThunk('image/fetch', async (arg, thunkAPI) => {
                 }
 
             if (state.image.cats.length === 0)
-                for (let i = 0; i < 16; i++) {
+                for (let i = 0; i < GameServices.CAT_IMAGE_LOAD_SIZE; i++) {
                     try {
                         const url = await imageServices.fetch('cat');
                         imageServices.loadImage(url, () => thunkAPI.dispatch(imageSlice.actions.addImage({ animal: 'cat', url })));
@@ -58,6 +60,7 @@ const fetch = createAsyncThunk('image/fetch', async (arg, thunkAPI) => {
 
     } catch (error) {
         console.error(error);
+        throw error;
     }
 
 });
