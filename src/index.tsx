@@ -14,11 +14,11 @@ root.render(
 
     <React.StrictMode>
 
-        <ErrorBoundary>
+        <Provider store={store}>
 
-            <Provider store={store}>
+            <Router basename="/click-the-fox">
 
-                <Router basename="/click-the-fox">
+                <ErrorBoundary>
 
                     <Routes>
 
@@ -29,11 +29,11 @@ root.render(
 
                     </Routes>
 
-                </Router>
+                </ErrorBoundary>
 
-            </Provider>
+            </Router>
 
-        </ErrorBoundary>
+        </Provider>
 
     </React.StrictMode>
 
