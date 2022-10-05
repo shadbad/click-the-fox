@@ -146,8 +146,6 @@ export default class GameServices {
 
     public getBoard(): BoardType {
 
-        // if (!this._intervalId) this.startTimer();
-
         if (this._boards.filter((board) => board.score === 0).length <= 3) this.generateBoards(2);
 
         const result = this._boards.find((board) => board.score === 0);
